@@ -2,8 +2,9 @@ import express from 'express'
 import dotenv from 'dotenv'
 import cors from 'cors'
 import morgan from 'morgan'
-import './db.js'
+import './db/db.js'
 
+// authenticated()
 const app = express()
 
 // Start env
