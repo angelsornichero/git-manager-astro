@@ -1,4 +1,3 @@
 api/.env
 api/node_modules
 api/pnpm-lock.yaml
-api/src/db.js

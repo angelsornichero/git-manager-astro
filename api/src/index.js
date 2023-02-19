@@ -1,10 +1,13 @@
 import express from 'express'
-import 'dotenv/config'
+import dotenv from 'dotenv'
 import cors from 'cors'
 import morgan from 'morgan'
 import './db.js'
 
 const app = express()
+
+// Start env
+dotenv.config()
 
 // App config
 app.set('port', process.env.PORT || 5000)
