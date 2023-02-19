@@ -1,11 +1,20 @@
 import express from 'express'
-import dotenv from 'dotenv'
-
-dotenv.config()
+import 'dotenv/config'
+import cors from 'cors'
+import morgan from 'morgan'
+import './db.js'
 
 const app = express()
-const PORT = process.env.PORT || 5000
 
-app.listen(PORT, () => {
-	console.log('Listening on port: ', PORT)
-})
+// App config
+app.set('port', process.env.PORT || 5000)
+
+// App middlewares
+app.use(cors())
+app.use(morgan('dev'))
+app.use(express.json())
+app.use(express.urlencoded({ extended: false }))
+
+
+// App listening
+app.listen(app.get('port'), () => console.log('Listening on port: ', app.get('port')))
