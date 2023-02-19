@@ -1,15 +1,13 @@
 import { DataTypes } from 'sequelize'
 import { sequelize } from '../db/connection.js'
+import { Task } from './TaskModel.js'
+import { Commit } from './CommitModel.js'
 
 export const Project = sequelize.define('project', {
 	id: {
 		type: DataTypes.INTEGER,
 		autoIncrement: true,
 		primaryKey: true
-	},
-	username:  {
-		type: DataTypes.STRING,
-		allowNull: false,
 	},
 	description: {
 		type: DataTypes.STRING,
@@ -27,5 +25,15 @@ export const Project = sequelize.define('project', {
 		type: DataTypes.BOOLEAN,
 		allowNull: false
 	}
+})
+
+Project.hasMany(Commit, {
+	foreignKey: 'projectid',
+	sourceKey: 'id'
+})
+
+Project.hasMany(Task, {
+	foreignKey: 'projectid',
+	sourceKey: 'id'
 })
 
