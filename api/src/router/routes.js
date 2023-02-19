@@ -1,4 +1,5 @@
 import { Router } from 'express'
+import * as crtlUser from '../controllers/auth.controllers.js'
 
 const router = Router()
 
@@ -6,7 +7,7 @@ const router = Router()
 router.get('/api/projects')
 router.get('/api/project/:project')
 // Post
-router.post('/api/auth/register')
+router.post('/api/auth/register', crtlUser.register)
 router.post('/api/auth/login')
 router.post('/api/new-project')
 router.post('/api/new-issue/:project')
