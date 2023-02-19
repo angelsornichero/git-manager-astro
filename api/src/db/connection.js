@@ -8,5 +8,6 @@ export const sequelize = new Sequelize(
 	process.env.MYSQL_USERNAME, 
 	process.env.MYSQL_PASSWORD, {
 		host: 'localhost',
-		dialect: 'mariadb'
+		dialect: 'mariadb',
+		logging: false
 	})

@@ -4,8 +4,8 @@ import '../Model/UserModel.js'
 
 (async () => {
 	try { 
-		await sequelize.sync({force: true})
-		console.log('Connection with database succesfully created')
+		await sequelize.sync({force: false})
+		console.log('[*] Database connected ')
 	}
 	catch (e) {
 		console.error(e)
