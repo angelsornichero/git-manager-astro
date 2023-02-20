@@ -1,6 +1,6 @@
 import { sequelize } from './connection.js'
-import '../Model/ProjectModel.js'
-import '../Model/UserModel.js'
+import '../model/ProjectModel.js'
+import '../model/UserModel.js'
 
 (async () => {
 	try { 
