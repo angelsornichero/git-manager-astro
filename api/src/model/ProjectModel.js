@@ -16,7 +16,7 @@ export const Project = sequelize.define('project', {
 		type: DataTypes.STRING,
 		allowNull: false
 	},
-	priority: {
+	label: {
 		type: DataTypes.STRING,
 		allowNull: false
 	},

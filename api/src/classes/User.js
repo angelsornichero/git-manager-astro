@@ -3,7 +3,8 @@ import jwt from 'jsonwebtoken'
 import bcrypt from 'bcrypt'
 import dotenv from 'dotenv'
 dotenv.config()
-class User {
+
+export default class User {
 	constructor ({ username, password, repeatPassword = undefined }) {
 		this.username = username
 		this.password = password
@@ -68,4 +69,3 @@ class User {
 	}
 }
 
-export default User
