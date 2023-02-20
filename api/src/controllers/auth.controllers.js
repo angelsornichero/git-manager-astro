@@ -1,4 +1,4 @@
-import User from '../class/User.js'
+import User from '../classes/User.js'
 
 export const register = async (req, res) => {
 	const { username, password, repeatPassword } = req.body
