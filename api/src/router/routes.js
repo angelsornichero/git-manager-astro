@@ -10,10 +10,9 @@ router.get('/api/project/:project')
 router.post('/api/auth/register', crtlUser.register)
 router.post('/api/auth/login', crtlUser.login)
 router.post('/api/new-project')
-router.post('/api/new-issue/:project')
-router.post('/api/new-commit/:project')
+router.post('/api/new-task/:project')
 // Put
-router.put('/api/issue/:id')
+router.put('/api/task/:id')
 router.put('/api/project/:id')
 // Delete
 router.delete('/api/project/:id')
