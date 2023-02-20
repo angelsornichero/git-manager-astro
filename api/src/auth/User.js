@@ -40,8 +40,31 @@ class User {
 
 	}
 
-	login () {
-        
+	async login () {
+		// Case 1: there is not username or password
+		if (!this.username || !this.password) return { success: false, message: '[!] There is not username or password' }
+
+		// Case 2: User not exists
+		const existsUser = await UserModel.findAll({ 
+			where: {
+				username: this.username
+			}
+		})
+		if (!existsUser[0]) return { success: false, message: '[!] User doesn\'t exists or password is incorrect' }
+
+		// Case 3: Wrong password 
+		const validPasswd = bcrypt.compareSync(this.password, existsUser[0].password)
+		if (!validPasswd) return { success: false, message: '[!] User doesn\'t exists or password is incorrect' }
+
+		// Main case 
+
+		try { 
+			const jwtToReturn = await jwt.sign({ username: this.username }, process.env.JWT_PASSWORD)
+			return { success: true, message: '[*] User correctly login', jwt: jwtToReturn }
+		} catch {
+			return { success: false, message: '[!] Error on sending JWT' }
+		}
+
 	}
 }
 

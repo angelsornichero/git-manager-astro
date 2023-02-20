@@ -8,7 +8,7 @@ router.get('/api/projects')
 router.get('/api/project/:project')
 // Post
 router.post('/api/auth/register', crtlUser.register)
-router.post('/api/auth/login')
+router.post('/api/auth/login', crtlUser.login)
 router.post('/api/new-project')
 router.post('/api/new-issue/:project')
 router.post('/api/new-commit/:project')

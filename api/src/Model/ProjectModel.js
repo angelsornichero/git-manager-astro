@@ -1,7 +1,6 @@
 import { DataTypes } from 'sequelize'
 import { sequelize } from '../db/connection.js'
 import { Task } from './TaskModel.js'
-import { Commit } from './CommitModel.js'
 
 export const Project = sequelize.define('project', {
 	id: {
@@ -27,10 +26,6 @@ export const Project = sequelize.define('project', {
 	}
 })
 
-Project.hasMany(Commit, {
-	foreignKey: 'projectid',
-	sourceKey: 'id'
-})
 
 Project.hasMany(Task, {
 	foreignKey: 'projectid',
