@@ -16,7 +16,7 @@ router.post('/api/new-task/:project')
 router.put('/api/task/:id')
 router.put('/api/project/:id')
 // Delete
-router.delete('/api/project/:id')
+router.delete('/api/project/:id', crtlProject.deleteProject)
 
 
 export default router
