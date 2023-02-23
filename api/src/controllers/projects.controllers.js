@@ -22,3 +22,12 @@ export const deleteProject = async (req, res) => {
 	const response = await newProject.delete()
 	res.json(response)
 }
+
+export const updateProject = async (req, res) => {
+	const { name, description, label, done } = req.body
+	const projectToRemove = req.params.id
+	const token = req.headers.authorization
+	const newProject = new Project({name, description, label, done, token})
+	const response = await newProject.update(projectToRemove)
+	res.json(response)
+}

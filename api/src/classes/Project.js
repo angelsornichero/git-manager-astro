@@ -71,8 +71,34 @@ export default class Project {
 		}
 	}
 
-	async update () {
-        
+	async update (name) {
+		// Verify Token
+		const username = await getUser(this.token)
+		
+		// Case 1: Token is not valid
+		if (!username) return { success: false, message: '[!] Token is not valid'}
+
+		// Main Case
+
+		try {
+			await ProjectModel.update(
+				{
+					name: this.name,
+					description: this.description,
+					done: this.done,
+					label: this.label
+				},
+				{
+					where: {
+						username: username,
+						name
+					}
+				}
+			)
+			return { success: true, message: '[*] Project correctly updated' }
+		} catch {
+			return { success: true, message: '[*] Error on updating the project' }
+		}
 	}
 
 	async getTasks () {
