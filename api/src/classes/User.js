@@ -2,6 +2,7 @@ import { User as UserModel } from '../model/UserModel.js'
 import jwt from 'jsonwebtoken'
 import bcrypt from 'bcrypt'
 import dotenv from 'dotenv'
+import  { Project as ProjectModel } from '../model/ProjectModel.js'
 dotenv.config()
 
 export default class User {
@@ -66,6 +67,28 @@ export default class User {
 			return { success: false, message: '[!] Error on sending JWT' }
 		}
 
+	}
+	
+	async getProjects (token) {
+		// Case 1: Token is invalid
+		try {
+			const { username } = await jwt.verify(token, process.env.JWT_PASSWORD)
+			this.username = username
+		} catch {
+			return { success: false, message: '[!] JWT token is invalid' }
+		}
+		// Main case
+
+		try { 
+			const projects = await ProjectModel.findAll({
+				where: {
+					username: this.username
+				}
+			})
+			return { success: true, projects }
+		} catch {
+			return { success: false, message: '[!] Error on searching the projects' }
+		}
 	}
 }
 

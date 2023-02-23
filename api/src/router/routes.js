@@ -5,7 +5,7 @@ import * as crtlProject from '../controllers/projects.controllers.js'
 const router = Router()
 
 // Get
-router.get('/api/projects')
+router.get('/api/projects', crtlProject.getProjects)
 router.get('/api/project/:project')
 // Post
 router.post('/api/auth/register', crtlUser.register)
