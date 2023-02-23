@@ -14,3 +14,11 @@ export const getProjects = async (req, res) => {
 	const getUserProjects = await new User({}).getProjects(token)
 	res.json(getUserProjects)
 }
+
+export const deleteProject = async (req, res) => {
+	const token = req.headers.authorization
+	const name = req.params.id
+	const newProject = new Project({token, name})
+	const response = await newProject.delete()
+	res.json(response)
+}

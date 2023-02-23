@@ -50,7 +50,25 @@ export default class Project {
 	}
 
 	async delete () {
+		// Verify Token
+		const username = await getUser(this.token)
+		
+		// Case 1: Token is not valid
+		if (!username) return { success: false, message: '[!] Token is not valid'}
 
+		// Main Case
+
+		try {
+			await ProjectModel.destroy({
+				where: {
+					username: username,
+					name: this.name
+				}
+			})
+			return { success: true, message: '[*] Project correctly removed' }
+		} catch {
+			return { success: true, message: '[*] Error on deleting the project' }
+		}
 	}
 
 	async update () {
