@@ -14,7 +14,7 @@ router.post('/api/auth/login', ctrlUser.login)
 router.post('/api/new-project', ctrlProject.createProject)
 router.post('/api/new-task/:project', ctrlTask.createTask)
 // Put
-router.put('/api/task/:id')
+router.put('/api/task/:id', ctrlTask.updateTask)
 router.put('/api/project/:id', ctrlProject.updateProject)
 // Delete
 router.delete('/api/project/:id', ctrlProject.deleteProject)
