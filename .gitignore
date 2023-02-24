@@ -1,3 +1,12 @@
+# Api
 api/.env
 api/node_modules
 api/pnpm-lock.yaml
+
+# App
+dist/
+.astro/
+app/node_modules
+app/.env
+app/pnpm-lock.yaml
+app/tsconfig.json
