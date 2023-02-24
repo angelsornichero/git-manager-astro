@@ -1,6 +1,7 @@
 import { DataTypes } from 'sequelize'
 import { sequelize } from '../db/connection.js'
 import { Project } from './ProjectModel.js'
+import { Task } from './TaskModel.js'
 
 export const User = sequelize.define('users', {
 	username:  {
@@ -17,6 +18,11 @@ export const User = sequelize.define('users', {
 })
 
 User.hasMany(Project, {
+	foreignKey: 'username',
+	sourceKey: 'username'
+})
+
+User.hasMany(Task, {
 	foreignKey: 'username',
 	sourceKey: 'username'
 })
