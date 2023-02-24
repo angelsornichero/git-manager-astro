@@ -7,7 +7,7 @@ const router = Router()
 
 // Get
 router.get('/api/projects', ctrlProject.getProjects)
-router.get('/api/project/:project')
+router.get('/api/project/:project', ctrlProject.getProject)
 // Post
 router.post('/api/auth/register', ctrlUser.register)
 router.post('/api/auth/login', ctrlUser.login)

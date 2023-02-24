@@ -35,3 +35,12 @@ export const updateProject = async (req, res) => {
 	if (response.success === false) return res.status(400).json(response)
 	res.json(response)
 }
+
+export const getProject = async (req, res) => {
+	const name = req.params.project
+	const token = req.headers.authorization
+	const projectToFound = new Project({ name, token })
+	const response = await projectToFound.getProject()
+	if (response.success === false) return res.status(404).json(response)
+	res.json(response)
+}

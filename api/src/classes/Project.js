@@ -1,4 +1,5 @@
 import { Project as ProjectModel } from '../model/ProjectModel.js'
+import { Task as TaskModel } from '../model/TaskModel.js'
 import dotenv from 'dotenv'
 import getUser from '../lib/getUser.js'
 dotenv.config()
@@ -101,8 +102,35 @@ export default class Project {
 		}
 	}
 
-	async getTasks () {
-        
+	async getProject () {
+		// Verify Token
+		const username = await getUser(this.token)
+		
+		// Case 1: Token is not valid
+		if (!username) return { success: false, message: '[!] Token is not valid'}
+
+		// Search Project
+		const projectFound = await ProjectModel.findAll({
+			where: {
+				name: this.name,
+				username
+			}
+		})
+		// Case 2 Projects doesn't exists
+		if (!projectFound[0]) return { success: false, message: '[!] No project found' }
+
+		// Main case
+		try {
+			const tasks = await TaskModel.findAll({
+				where: {
+					username,
+					projectid: projectFound[0].id
+				}
+			})
+			return { success: true, project: projectFound[0], tasks }
+		} catch {
+			return { success: false, message: '[!] Error on finding the project' }
+		}
 	}
 }
 
