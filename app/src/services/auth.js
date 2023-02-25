@@ -18,4 +18,12 @@ export default class AuthRequest {
 		})
 		return data
 	}
+
+	async login () {
+		const { data } = await axios.post(this.url, {
+			username: this.username,
+			password: this.password,
+		})
+		return data
+	}
 }

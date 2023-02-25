@@ -1,5 +1,6 @@
 import React from 'react'
 
+// eslint-disable no-alert 
 const Error = ({ err }) => {
 	return (
 		<div className='flex justify-center'>
