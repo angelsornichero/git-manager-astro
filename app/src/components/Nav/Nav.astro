@@ -1,0 +1,22 @@
+---
+import ChangeTheme from "../Button/ChangeTheme";
+---
+
+<header class="bg-[#26233a] py-5 mx-12 my-5 rounded-lg text-[#C778DD]">
+    <nav>
+        <ul class='flex justify-evenly text-xl'>
+            <li>
+                <a href='/'>Home</a>
+            </li>
+            <li>
+                <a href='/register'>Register Now!</a>
+            </li>
+            <li>
+                <a href='/login'>Login</a>
+            </li>
+            <li>
+                <ChangeTheme client:load />
+            </li>
+        </ul>
+    </nav>
+</header>

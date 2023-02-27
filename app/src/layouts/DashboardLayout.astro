@@ -1,7 +1,5 @@
 ---
-import Nav from "../components/Nav/Nav.astro";
 import Branch from "../components/icons/Branch.astro"
-
 ---
 
 <html lang="en">
@@ -16,11 +14,9 @@ import Branch from "../components/icons/Branch.astro"
 			} else {
 				document.documentElement.classList.remove('dark')
 			}
-			
 		</script>
 	</head>
 	<body class='dark:bg-[#191724] bg-[#ece1ef] dark'>
-        <Nav />
 		<Branch />
 		<slot />
 	</body>

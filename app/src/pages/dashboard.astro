@@ -1,11 +1,22 @@
 ---
-import DefaultLayout from "../layouts/DefaultLayout.astro";
+import DashboardLayout from "../layouts/DashboardLayout.astro";
 import Rocket from "../components/icons/Rocket.astro";
+
+import isLoggedIn from "../utils/isLogged";
+const jwt = Astro.request.headers.get('cookie')
+
+if (!await isLoggedIn(jwt || '')) return await Astro.redirect('/dashboard')
+
 ---
 
-<DefaultLayout>
+<DashboardLayout>
     <section class="my-12">
-        <h1 class="justify-center text-6xl flex  text-[#eca33d]">Your projects! <Rocket /></h1>
+        <div>
+            <h1 class="justify-center text-6xl flex font-bold text-[#eca33d]">Your projects! <Rocket /></h1>
+        </div>
+        <div>
+            
+        </div>
     </section>
     
-</DefaultLayout>
+</DashboardLayout>

@@ -1,7 +1,12 @@
 ---
 import DefaultLayout from "../layouts/DefaultLayout.astro"
-import Branch from "../components/icons/Branch.astro"
 import LoginForm from "../components/Forms/LoginForm";
+
+import isLoggedIn from "../utils/isLogged";
+const jwt = Astro.request.headers.get('cookie')
+
+if (await isLoggedIn(jwt || '')) return await Astro.redirect('/dashboard')
+
 ---
 <DefaultLayout>
     <LoginForm client:load />
