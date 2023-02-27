@@ -13,6 +13,7 @@ const LoginForm = () => {
 		try {
 			const data = await new AuthRequest({url: '/auth/login', username: user.username, password: user.password}).login()
 			setCookie('sessionJWT', data.jwt)
+			window.location.href = '/dashboard'
 		} catch (err) {
 			setError(err.response.data.message)
 		}

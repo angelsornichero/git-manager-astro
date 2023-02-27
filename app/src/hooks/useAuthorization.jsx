@@ -5,17 +5,21 @@ import { useCookies } from 'react-cookie'
 
 const useAuthorization = () => {
 	const [jwt, setJwt] =  useState()
+	const [username, setUsername] =  useState()
 	const [cookie] = useCookies(['sessionJWT'])
 
-	const loadId = async () => {
+	const loadUser = async () => {
 		const { payload } = await jose.jwtVerify(cookie.sessionJWT, new TextEncoder().encode(import.meta.env.PUBLIC_SECRET_JWT))
-		if (payload) return setJwt(cookie.sessionJWT)
+		if (payload) {
+			setUsername(payload.username)
+			return setJwt(cookie.sessionJWT)
+		}
 		setJwt(null)
 	}
 
-	useEffect(() => {loadId()})
+	useEffect(() => {loadUser()})
 
-	return { jwt }
+	return { jwt, username }
 }
 
 export default useAuthorization
