@@ -5,12 +5,11 @@ import getUser from '../lib/getUser.js'
 dotenv.config()
 
 export default class Project {
-	constructor ({ token, name, description = '',  label = '', done}) {
+	constructor ({ token, name, description = '',  label = ''}) {
 		this.token = token
 		this.name = name
 		this.description = description
 		this.label = label
-		this.done = done
 	}
 
 	async create () {
@@ -21,7 +20,7 @@ export default class Project {
 		if (!username) return { success: false, message: '[!] Token is not valid' }
 
 		// Case 2: There are not all the params to create the project
-		if (!this.name || this.done === undefined || this.done === null) return { success: false, message: '[!] There are some fields missing' }
+		if (!this.name) return { success: false, message: '[!] The project must have a name' }
 
 		// Case 3: Project already exists
 		const projectFound = await ProjectModel.findAll({
@@ -86,7 +85,6 @@ export default class Project {
 				{
 					name: this.name,
 					description: this.description,
-					done: this.done,
 					label: this.label
 				},
 				{

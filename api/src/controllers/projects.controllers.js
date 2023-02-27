@@ -2,9 +2,9 @@ import Project from '../classes/Project.js'
 import User from '../classes/User.js'
 
 export const createProject = async (req, res) => {
-	const { name, description, label, done } = req.body
+	const { name, description, label } = req.body
 	const token = req.headers.authorization
-	const newProject = new Project({name, description, label, done, token})
+	const newProject = new Project({name, description, label, token})
 	const response = await newProject.create()
 	if (response.success === false) return res.status(400).json(response)
 	res.json(response)
@@ -27,10 +27,10 @@ export const deleteProject = async (req, res) => {
 }
 
 export const updateProject = async (req, res) => {
-	const { name, description, label, done } = req.body
+	const { name, description, label  } = req.body
 	const projectToRemove = req.params.id
 	const token = req.headers.authorization
-	const newProject = new Project({name, description, label, done, token})
+	const newProject = new Project({name, description, label, token})
 	const response = await newProject.update(projectToRemove)
 	if (response.success === false) return res.status(400).json(response)
 	res.json(response)

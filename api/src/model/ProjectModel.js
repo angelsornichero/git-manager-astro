@@ -19,10 +19,6 @@ export const Project = sequelize.define('project', {
 	label: {
 		type: DataTypes.STRING,
 		allowNull: false
-	},
-	done: {
-		type: DataTypes.BOOLEAN,
-		allowNull: false
 	}
 })
 
