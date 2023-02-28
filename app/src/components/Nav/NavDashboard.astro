@@ -4,6 +4,7 @@ import Logout from "../Button/Logout";
 import User from "../icons/User.astro";
 import Username from "../data/Username";
 import Plus from "../icons/Plus.astro";
+import LogoutIcon from "../icons/Logout.astro";
 ---
 
 <header class="bg-[#26233a] text-[#e0def4]">
@@ -13,12 +14,15 @@ import Plus from "../icons/Plus.astro";
                 <User />
                 <Username client:load />
             </div>
-            <div class="flex">
+            <div class="flex gap-8 mx-5">
                 <li class="pt-4 text-black">
-                    <a class="px-4 py-2 rounded-md cursor-pointer bg-[#f6c177] flex " href="/new">New project<Plus /></a>
+                    <a class="px-4 py-2 rounded-md cursor-pointer bg-[#f6c177] flex" href="/new">New project<Plus /></a>
                 </li>
                 <li class="p-3 pt-5 font-extrabold">
                     <ChangeTheme client:load />
+                </li>
+                <li class="text-4xl p-4 pt-5">
+                    <Logout client:load><LogoutIcon/></Logout>
                 </li>
             </div>
         </ul>

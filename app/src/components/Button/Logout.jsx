@@ -1,7 +1,7 @@
 import React from 'react'
 import { useCookies } from 'react-cookie'
 
-const Logout = () => {
+const Logout = (props) => {
 	const [, , removeCookie] = useCookies(['sessionJWT'])
 
 	const handleLogout = () => {
@@ -9,7 +9,7 @@ const Logout = () => {
 		window.location.href = '/'
 	}
 	return (
-		<button onClick={handleLogout}>Logout</button>
+		<button onClick={handleLogout}>{props.children}</button>
 	)
 }
 
