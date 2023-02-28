@@ -70,15 +70,16 @@ export default class User {
 	}
 	
 	async getProjects (token) {
+		console.log(token)
 		// Case 1: Token is invalid
 		try {
 			const { username } = await jwt.verify(token, process.env.JWT_PASSWORD)
 			this.username = username
 		} catch {
 			return { success: false, message: '[!] JWT token is invalid' }
+			
 		}
 		// Main case
-
 		try { 
 			const projects = await ProjectModel.findAll({
 				where: {

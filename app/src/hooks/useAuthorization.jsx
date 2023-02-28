@@ -3,7 +3,7 @@ import * as jose from 'jose'
 import { useCookies } from 'react-cookie'
 
 
-const useAuthorization = () => {
+export default function useAuthorization () {
 	const [jwt, setJwt] =  useState()
 	const [username, setUsername] =  useState()
 	const [cookie] = useCookies(['sessionJWT'])
@@ -22,4 +22,3 @@ const useAuthorization = () => {
 	return { jwt, username }
 }
 
-export default useAuthorization

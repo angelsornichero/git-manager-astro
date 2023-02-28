@@ -1,20 +1,18 @@
 import jwt from 'jsonwebtoken'
-
-
-
+import dotenv from 'dotenv'
+dotenv.config()
 export const isAuthenticated = async (req, res, next) => {
-	console.log(req.body)
-	if (!req.headers.authorization) return res.status(400).json({statusCode: 401, message: '[!] You have to put a header of authorization'}, res)
+	console.log(req.headers.authorization)
+	if (!req.headers.authorization) return res.status(401).json({message: '[!] You have to put a header of authorization'})
 	const token = req.headers.authorization.replace('token ', '')
     
 	try {
-		await jwt.verify(token, process.env.JWT_SECRET)
+		await jwt.verify(token, process.env.JWT_PASSWORD)
         
 	}
 	catch(err) {
-		res.status(401).json({statusCode: 401, message: '[!] The token is invalid'}, res)
+		res.status(401).json({message: '[!] The token is invalid'})
         
 	}
-    
 	return next()
 }

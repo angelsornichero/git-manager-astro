@@ -12,9 +12,10 @@ export const createProject = async (req, res) => {
 
 export const getProjects = async (req, res) => {
 	const token = req.headers.authorization
-	const getUserProjects = await new User({}).getProjects(token)
-	if (getUserProjects.success === false) return res.status(400).json(getUserProjects)
-	res.json(getUserProjects)
+	const getUserProjects = new User({})
+	console.log(token, 'ey')
+	const response = await getUserProjects.getProjects(token)
+	res.status(200).json(response)
 }
 
 export const deleteProject = async (req, res) => {
