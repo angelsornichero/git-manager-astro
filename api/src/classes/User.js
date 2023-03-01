@@ -70,7 +70,6 @@ export default class User {
 	}
 	
 	async getProjects (token) {
-		console.log(token)
 		// Case 1: Token is invalid
 		try {
 			const { username } = await jwt.verify(token, process.env.JWT_PASSWORD)

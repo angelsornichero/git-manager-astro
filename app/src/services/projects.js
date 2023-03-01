@@ -9,7 +9,6 @@ export default class Projects {
 	}
 
 	async getProjects() {
-		console.log(this.token)
 		const { data } = await axios.get(this.url, {
 			headers: {
 				Authorization: this.token

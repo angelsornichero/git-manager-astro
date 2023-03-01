@@ -13,7 +13,6 @@ export const createProject = async (req, res) => {
 export const getProjects = async (req, res) => {
 	const token = req.headers.authorization
 	const getUserProjects = new User({})
-	console.log(token, 'ey')
 	const response = await getUserProjects.getProjects(token)
 	res.status(200).json(response)
 }
