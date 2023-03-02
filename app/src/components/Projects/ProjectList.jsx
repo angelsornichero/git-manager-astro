@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import Project from '../../services/projects'
 import { useCookies } from 'react-cookie'
 import Error from '../Errors/Error'
+import ProjectCard from './ProjectCard.jsx'
 
 const ProjectList = () => {
 	const [cookies] = useCookies(['sessionJWT'])
@@ -24,7 +25,7 @@ const ProjectList = () => {
 	
 	
 	return (
-		<div>
+		<div className='my-6 mx-16'>
 			{
 				error 
 					? <Error err={error} />
@@ -33,8 +34,8 @@ const ProjectList = () => {
 			{
 				loading ? <h1>Loading ...</h1>
 					:
-					projects.map(({ id, name }) => (
-						<span key={id}>{name}</span>
+					projects.map(({ id, name, createdAt, description }) => (
+						<ProjectCard key={id} name={name} createdAt={createdAt} description={description} id={id} />
 					))
 			}
 		</div>
