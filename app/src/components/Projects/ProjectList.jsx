@@ -21,6 +21,7 @@ const ProjectList = () => {
 			console.log(e)
 			setError(e.response.data.message)
 		}
+
 	}, [])
 	
 	
@@ -34,8 +35,8 @@ const ProjectList = () => {
 			{
 				loading ? <h1>Loading ...</h1>
 					:
-					projects.map(({ id, name, createdAt, description }) => (
-						<ProjectCard key={id} name={name} createdAt={createdAt} description={description} id={id} />
+					projects.map(({ id, name, createdAt, description, label }) => (
+						<ProjectCard key={id} name={name} label={label} createdAt={createdAt} description={description} id={id} />
 					))
 			}
 		</div>

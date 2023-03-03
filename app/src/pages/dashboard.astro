@@ -14,8 +14,8 @@ if (!await isLoggedIn(jwt || '')) return await Astro.redirect('/dashboard')
             <h1 class="justify-center text-6xl flex font-bold text-[#eca33d]">Your projects! <Rocket /></h1>
         </div>
         <div>
-            <ProjectList client:visible />
+            <ProjectList client:load />
         </div>
     </section>
-    
 </DashboardLayout>
+
