@@ -37,7 +37,7 @@ export default class Project {
 			const newProject = await ProjectModel.create({
 				name: this.name,
 				description: this.description,
-				label: this.label,
+				label: this.label || 'All',
 				done: this.done,
 				username: username
 			})

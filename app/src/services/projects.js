@@ -17,4 +17,19 @@ export default class Projects {
 		
 		return data
 	}
+
+	async createProject({ name, description, label }) {
+		const { data } = await axios.post(this.url, {
+			name, 
+			description, 
+			label
+		},
+		{
+			headers: {
+				Authorization: this.token
+			}
+		})
+		
+		return data
+	}
 }

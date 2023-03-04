@@ -35,9 +35,13 @@ const ProjectList = () => {
 			{
 				loading ? <h1>Loading ...</h1>
 					:
-					projects.map(({ id, name, createdAt, description, label }) => (
-						<ProjectCard key={id} name={name} label={label} createdAt={createdAt} description={description} id={id} />
-					))
+					<div className='flex justify-between'>
+						{
+							projects.map(({ id, name, createdAt, description, label }) => (
+								<ProjectCard key={id} name={name} label={label} createdAt={createdAt} description={description} id={id} />
+							))
+						}
+					</div>
 			}
 		</div>
 	)
