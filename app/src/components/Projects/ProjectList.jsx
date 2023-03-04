@@ -26,7 +26,7 @@ const ProjectList = () => {
 	
 	
 	return (
-		<div className='my-6 mx-16'>
+		<div>
 			{
 				error 
 					? <Error err={error} />
@@ -35,13 +35,16 @@ const ProjectList = () => {
 			{
 				loading ? <h1>Loading ...</h1>
 					:
-					<div className='flex justify-between'>
+					<div className='flex flex-wrap my-8 mx-12 gap-32 justify-center'>
 						{
 							projects.map(({ id, name, createdAt, description, label }) => (
 								<ProjectCard key={id} name={name} label={label} createdAt={createdAt} description={description} id={id} />
 							))
 						}
+
 					</div>
+						
+					
 			}
 		</div>
 	)

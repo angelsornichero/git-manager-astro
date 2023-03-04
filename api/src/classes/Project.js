@@ -34,14 +34,13 @@ export default class Project {
 		// Main case
 
 		try { 
-			const newProject = await ProjectModel.create({
+			await ProjectModel.create({
 				name: this.name,
 				description: this.description,
-				label: this.label || 'All',
+				label: this.label,
 				done: this.done,
 				username: username
 			})
-			console.log(newProject, this)
 			return { success: true, message: '[*] Project succesfully created' }
 		} catch {
 			return { success: false, message: '[!] Error on create project'}
