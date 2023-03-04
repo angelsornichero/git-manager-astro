@@ -1,9 +1,38 @@
 import React from 'react'
 const ProjectCard = (props) => {
 
+
+	const handleMovemenet = e => {
+		const $ = selector => document.querySelector(selector)
+		
+		const wrapper = $(`#wrapper-${props.id}`)
+		wrapper.style.transition = 'none'
+
+		const { width, height } = wrapper.getBoundingClientRect()
+
+		const halfWidth = width / 2
+		const halfHeight = height / 2
+
+		const { offsetX, offsetY } = e.nativeEvent
+		
+		const rotationX = ((offsetX - halfWidth) / halfWidth) * 11
+		const rotationY = ((offsetY - halfHeight) / halfHeight) * 11
+		
+		wrapper.style.transform = `rotateX(${rotationX}deg) rotateY(${rotationY}deg)`
+	}
+
+	const handleStop = () => {
+		const $ = selector => document.querySelector(selector)
+		
+		const wrapper = $(`#wrapper-${props.id}`)
+
+		wrapper.style.transition = 'transform .5s ease-in-out'
+		wrapper.style.transform = 'rotateX(0deg) rotateY(0deg)'
+	}
+ 
 	return (
-		<div className='bg-[#26233a] max-w-2xl rounded-lg wrapper [perspective:1000px] shadow-2xl opacity-90'>
-			<div className='p-4 flex justify-between w-full'>
+		<div onMouseLeave={handleStop} onMouseMove={handleMovemenet} id={`wrapper-${props.id}`} className='bg-gradient-to-r from-[#26233a] to-[#29273d] max-w-2xl rounded-lg [perspective:1000px] shadow-2xl opacity-1'>
+			<div  className='p-4 flex justify-between w-full'>
 				<span className='text-2xl text-[#ebbcba]'>{props.name}</span>
 				<span className='text-lg text-[#31748f]'>{props.createdAt.split('T')[0]}</span>
 			</div>
