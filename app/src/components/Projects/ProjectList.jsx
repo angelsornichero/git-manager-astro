@@ -6,7 +6,6 @@ import useProjects from '../../hooks/useProjects'
 const ProjectList = () => {
 	const { projects, loading, error } = useProjects()
 	
-	
 	return (
 		<div>
 			{

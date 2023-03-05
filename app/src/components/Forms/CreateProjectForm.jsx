@@ -34,8 +34,8 @@ const CreateProjectForm = () => {
 					? <Error err={error}  />
 					: <div></div>
 			}
-			<div>
-				<form className='flex flex-col text-white p-8 bg-[#393552] w-full rounded-sm' onSubmit={submitProject}>
+			<div className='mt-24 justify-center flex'>
+				<form className='flex flex-col text-white p-8 bg-[#393552] rounded-sm' onSubmit={submitProject}>
 					<h1 className='font-extrabold text-4xl text-center py-6'>Create new project!</h1>
 					<input onChange={handleChange} className='bg-transparent border-b-2 p-4 w-full' placeholder='Project name' name='name' type={'text'} />
 					<textarea onChange={handleChange} className='w-full bg-transparent border-b-2 p-4' placeholder='Write a description' name='description'></textarea>

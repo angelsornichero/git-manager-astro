@@ -8,7 +8,5 @@ if (!await isLoggedIn(jwt || '')) return await Astro.redirect('/dashboard')
 ---
 
 <DashboardLayout>
-    <div class="mt-24 justify-center flex ">
         <CreateProjectForm client:load />
-    </div>
 </DashboardLayout>

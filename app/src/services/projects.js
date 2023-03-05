@@ -18,6 +18,16 @@ export default class Projects {
 		return data
 	}
 
+	async getProject() {
+		const { data } = await axios.get(this.url, {
+			headers: {
+				Authorization: this.token
+			}
+		})
+		
+		return data 
+	}
+
 	async createProject({ name, description, label }) {
 		const { data } = await axios.post(this.url, {
 			name, 
