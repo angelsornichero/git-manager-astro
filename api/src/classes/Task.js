@@ -26,6 +26,7 @@ export default class Task {
 		if (!projectFound[0]) return { success: false, message: '[!] Project doesn\'t exists' }
 
 		// Case 3: Task already exists
+		
 		const taskFound = await TaskModel.findAll({
 			where: {
 				task: this.task,
@@ -33,17 +34,18 @@ export default class Task {
 				projectid: this.project
 			}
 		})
+		
 		if (taskFound[0]) return { success: false, message: '[!] Task already exists' }
 
 		// Main Case
-		try { 
+		try {
 			await TaskModel.create({
 				task: this.task,
 				username: username,
 				projectid: projectFound[0].id,
 				completed: this.completed
 			})
-			return { success: false, message: '[*] Task successfully created' }
+			return { success: true, message: '[*] Task successfully created' }
 		} catch {
 			return { success: false, message: '[!] Error on create the task' }
 		}
