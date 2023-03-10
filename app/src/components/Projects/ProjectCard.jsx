@@ -8,17 +8,20 @@ const ProjectCard = (props) => {
 		const wrapper = $(`#wrapper-${props.id}`)
 		wrapper.style.transition = 'none'
 
-		const { width, height } = wrapper.getBoundingClientRect()
+		const height = wrapper.clientHeight
+		const width = wrapper.clientWidth
 
-		const halfWidth = width / 2
-		const halfHeight = height / 2
-
-		const { offsetX, offsetY } = e.nativeEvent
+		const { layerX, layerY } = e.nativeEvent
 		
-		const rotationX = ((offsetX - halfWidth) / halfWidth) * 8
-		const rotationY = ((offsetY - halfHeight) / halfHeight) * 8
+		const rotationX = ((layerX - width / 2) / width) * 10
+		const rotationY = ((layerY - height / 2) / height) * 10
 		
-		wrapper.style.transform = `rotateX(${rotationX}deg) rotateY(${rotationY}deg)`
+		wrapper.style.transform = `
+			perspective(500px)
+			scale(1,1)
+			rotateX(${rotationX}deg) 
+			rotateY(${rotationY}deg)
+		`
 	}
 
 	const handleStop = () => {
@@ -27,12 +30,12 @@ const ProjectCard = (props) => {
 		const wrapper = $(`#wrapper-${props.id}`)
 
 		wrapper.style.transition = 'transform .5s ease-in-out'
-		wrapper.style.transform = 'rotateX(0deg) rotateY(0deg)'
+		wrapper.style.transform = 'scale(1) rotateX(0deg) rotateY(0deg)'
 	}
  
 	return (
 		<a href={`/projects/${props.name}`}>
-			<div onMouseLeave={handleStop} onMouseMove={handleMovemenet} id={`wrapper-${props.id}`} className='bg-gradient-to-r from-[#26233a] to-[#29273d] w-[600px] rounded-lg [perspective:1000px] shadow-2xl opacity-1'>
+			<div onMouseLeave={handleStop} onMouseMove={handleMovemenet} id={`wrapper-${props.id}`} className='bg-gradient-to-r from-[#26233a] to-[#29273d] w-[600px] rounded-lg  shadow-2xl opacity-1'>
 				<div className='p-4 flex justify-between w-full'>
 					<span className='text-3xl font-extrabold overflow-hidden text-ellipsis text-[#ebbcba]'>{props.name}</span>
 					<span className='text-lg text-[#31748f]'>{props.createdAt.split('T')[0]}</span>
