@@ -9,10 +9,23 @@ export default class Task {
 	}
 
 	async createTask({ task }) {
-		console.log(task.task)
 		const { data } = await axios.post(this.url, {
 			task,
 			completed: false
+		},
+		{
+			headers: {
+				Authorization: this.token
+			}
+		})
+		
+		return data
+	}
+
+	async updateTask ({ completed, task }) {
+		const { data } = await axios.put(this.url, {
+			taskToUpdate: task,
+			completed
 		},
 		{
 			headers: {

@@ -70,7 +70,6 @@ export default class Task {
 		try { 
 			await TaskModel.update(
 				{
-					task: this.task,
 					completed: this.completed
 				},
 				{
@@ -81,7 +80,7 @@ export default class Task {
 					}
 				}
 			)
-			return { success: false, message: '[*] Task successfully updated' }
+			return { success: true, message: '[*] Task successfully updated' }
 		} catch {
 			return { success: false, message: '[!] Error on update the task' }
 		}

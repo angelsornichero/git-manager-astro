@@ -21,7 +21,7 @@ const SingleProject = ({ project }) => {
 						<>
 							<ProjectNav name={projectInfo.name} label={projectInfo.label} /> 
 							<CreateTaskForm project={projectInfo.name} />
-							<TaskList tasks={tasks} />
+							<TaskList project={projectInfo.name} tasks={tasks} />
 						</>
 					)
 			}       
