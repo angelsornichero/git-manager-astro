@@ -1,18 +1,19 @@
 import React from 'react'
 import ProjectNav from './project-components/ProjectNav'
-import Error from '../Errors/Error'
 import useSingleProject from '../../hooks/useSingleProject'
 import TaskList from '../Tasks/TaskList'
 import CreateTaskForm from '../Forms/CreateTaskForm'
 
 const SingleProject = ({ project }) => {
 	const { projectInfo, error, loading, tasks } = useSingleProject(project)
+	
+	if (error) window.location.href = '/Notfoundjeje'
 
 	return (
 		<> 
 			{
 				error 
-					? <Error />
+					? <div></div>
 					: <div></div>
 			}
 			{
